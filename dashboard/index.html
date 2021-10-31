@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traffic Simulator</title>
+
+    <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
+    <link rel="stylesheet" type="text/css" href="styles.css">
+
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js@3.6.0/dist/chart.min.js"></script>
+</head>
+<body>
+    <div id="map"></div>
+    <div id="chartContainer">
+        <canvas id="myChart"></canvas>
+    </div>
+    <div id ="info">
+        Regional duration between Ticket Issue and Departure
+        <br>
+        <div id ='moreInfo'>
+            Tap on the map to set orgin;  Tap again to set destination
+            <br>
+            Below graph shows the duration between ticket issue and departure
+            <br>
+            Grouped by week(5) and days(7)
+            <br>
+            <div>
+                <div style="display: flex;">
+                    <!-- vibgyor boxes -->
+                    <div style="background-color: rgba(255,0,0,1);" class="label">Sunday</div>
+                    <div style="background-color: rgba(255,127,0,1); "class="label">Monday</div>
+                    <div style="background-color: rgba(255,255,0,1); "class="label">Tuesday</div>
+                    <div style="background-color: rgba(0,255,0,1); "class="label">Wednesday</div>
+                    <div style="background-color: rgba(0,0,255,1); "class="label">Thursday</div>
+                    <div style="background-color: rgba(75,0,130,1); "class="label">Friday</div>
+                    <div style="background-color: rgba(148,0,211,1); "class="label">Saturday</div>
+                </div>
+            </div>
+            <label for="cabin">Cabin:</label>
+
+            <select name="cabin" id="cabin" onchange="updateChart()">
+                <option value="0">Economy</option>
+                <option value="1">Premium</option>
+            </select>
+
+            <label for="trip">Trip:</label>
+
+            <select name="trip" id="trip" onchange="updateChart()">
+            <option value="0">One Way</option>
+            <option value="1">Two Way</option>
+            <option value="2">Multi Stop</option>
+            </select>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>

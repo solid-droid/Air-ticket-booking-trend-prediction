@@ -27,7 +27,7 @@ const color = {
     6 : 'rgba(148,0,211,1)' 
 }
 
-const url = 'https://travelverse.pagekite.me/';
+const url = 'https://travelverse.pagekite.me';
 
 async function getPrediction(params) {
     const response = await fetch(url+'/predict',{

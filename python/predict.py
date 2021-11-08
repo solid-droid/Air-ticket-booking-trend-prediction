@@ -1,8 +1,6 @@
 
 import pickle
-from flask import Flask
-from flask import request
-from flask import jsonify
+from flask import Flask, request , jsonify , render_template
 from flask_cors import CORS, cross_origin
 
 file = open("duration_model.sav",'rb')
@@ -33,6 +31,11 @@ def predict():
         pred = int(pred[0])
         predList.append({'pred':pred,'month':data['month'],'day':data['day'],'week':data['week']})
     return jsonify(predList)
+
+@app.route('/travel')
+@cross_origin()
+def home():
+    return render_template('index.html')
 
 
 if __name__ == '__main__':

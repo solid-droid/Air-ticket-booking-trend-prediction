@@ -28,8 +28,9 @@ const color = {
 }
 
 // const url = 'https://travelverse.pagekite.me';
-const url = 'http://127.0.0.1:5000';
-
+let url = window.location.href.split('/');
+url = url[0]+'//'+url[2];
+console.log(url);
 async function getPrediction(params) {
     const response = await fetch(url+'/predict',{
         body: JSON.stringify( params )  ,
@@ -67,8 +68,8 @@ const svg = `<svg xmlns="http://www.w3.org/2000/svg" class="svg-icon" viewBox="0
 let clickCounter = 0;
 let orgin = {lat:28.5, lng:77.1}; 
 let dest = {lat:8.47, lng:26.9};
-let orginMarker = new H.map.Marker(orgin,{icon: new H.map.Icon('./icons/start.png',{size: {w: 50, h: 50}})});
-let destMarker = new H.map.Marker(dest,{icon: new H.map.Icon('./icons/end.png',{size: {w: 50, h: 50}})});
+let orginMarker = new H.map.Marker(orgin,{icon: new H.map.Icon('./static/start.png',{size: {w: 50, h: 50}})});
+let destMarker = new H.map.Marker(dest,{icon: new H.map.Icon('./static/end.png',{size: {w: 50, h: 50}})});
 let lineString = new H.geo.LineString();
 lineString.pushPoint(dest);
 lineString.pushPoint(orgin);
